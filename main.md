@@ -1,6 +1,5 @@
 CHEF essentials commands:
 
-=========================================================================================
 # Knife Commands:
 
 ```knife --version  # get knife version```
@@ -64,4 +63,35 @@ Run selected cookbook,recipie in client:
 ```
   sudo chef-client -r mt_users::access
 ```
-=========================================================================================
+Download chef components from the chef-server to chef workstation local:
+
+  knife download data_bags
+  knife download cookbooks
+  knife download environments
+  knife download roles
+
+
+### Chef syntax check:
+```
+  chef exec ruby -c  <file-name>
+```
+
+### chef Generate:
+  chef generate cookbook helloworld
+  chef generate template index.html   # inside the cookbook specific directory
+
+
+### Run chef client on chefDK- local mode
+
+  chef-client --local-mode --runlist 'recipie[helloworld]'
+
+### Add role to node:
+
+  knife node run_list add <node_name> 'role[ROLE_NAME]'
+
+### Add roles and recipies to node runlist:
+
+  knife node run_list add <node_name> 'recipe[COOKBOOK::RECIPE_NAME],recipe[COOKBOOK::RECIPE_NAME],role[ROLE_NAME]'
+
+  knife node run_list add <node_name> 'COOKBOOK'               # adding defult recipie
+  knife node run_list add <node_name> 'COOKBOOK::RECIPE_NAME'  # adding specific recipie
