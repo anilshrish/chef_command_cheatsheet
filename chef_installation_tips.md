@@ -194,3 +194,14 @@ sudo env "PATH=$PATH"  <command>
 eval "$(chef shell-init bash)"
 ```
 
+# Few More useful commands
+
+```
+knife list roles/ environments/
+
+knife environment list -w   # Environment with URL
+
+knife environment compare --all  # Gives comparisions between packages versions installed in various environmnet.
+
+knife node show <node_name> -r # Show only runlist.
+```
